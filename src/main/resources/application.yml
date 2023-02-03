@@ -1,4 +1,14 @@
 spring:
+  h2:
+    console:
+      enabled: true
+
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:mapAPITest
+    username: sa
+    password:
+
   jpa:
     hibernate:
     properties:
@@ -9,6 +19,6 @@ spring:
 naver:
     id: 5sf0zb97s1
     secret: pzVSt8JTVeVQtsZbAiR85JXSWqyOMp0k9RGjH5nC
-
+    url : https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=
 
 
