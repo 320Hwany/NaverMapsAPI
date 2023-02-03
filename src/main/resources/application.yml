@@ -1,0 +1,14 @@
+spring:
+  jpa:
+    hibernate:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+naver:
+    id: 5sf0zb97s1
+    secret: pzVSt8JTVeVQtsZbAiR85JXSWqyOMp0k9RGjH5nC
+
+
+
