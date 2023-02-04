@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import static java.lang.Math.*;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @NoArgsConstructor
@@ -35,8 +36,26 @@ public class Address {
     }
 
     public void calculateDistance(Graph inputGraph) {
-        int longitude = Integer.parseInt(graph.getLongitude()) - Integer.parseInt(inputGraph.getLongitude());
-        int latitude = Integer.parseInt(graph.getLatitude()) - Integer.parseInt(inputGraph.getLatitude());
-        this.distance = Math.sqrt(Math.exp(longitude) - Math.exp(latitude));
+
+        double startLat = Double.parseDouble(graph.getLatitude());
+        double startLong = Double.parseDouble(graph.getLongitude());
+        double endLat = Double.parseDouble(inputGraph.getLongitude());
+        double endLong = Double.parseDouble(inputGraph.getLongitude());
+
+        double dLat  = Math.toRadians((endLat - startLat));
+        double dLong = Math.toRadians((endLong - startLong));
+
+        startLat = Math.toRadians(startLat);
+        endLat   = Math.toRadians(endLat);
+
+        double a = haversin(dLat) + Math.cos(startLat) * Math.cos(endLat) * haversin(dLong);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        this.distance = 6371 * c;
     }
+
+    public static double haversin(double val) {
+        return Math.pow(Math.sin(val / 2), 2);
+    }
+
 }

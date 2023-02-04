@@ -54,6 +54,7 @@ public class TestController {
         String latitude = addresses.findPath("y").textValue();
 
         Graph graph = Graph.getFromXAndY(longitude, latitude);
+
         return ResponseEntity.ok(graph);
     }
 
